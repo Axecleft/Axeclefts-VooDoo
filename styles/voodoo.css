@@ -27,6 +27,8 @@
   padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
 }
 body.ax-voodoo-on { overflow: hidden; }
+/* Desktop HUDs over the VooDoo window (VooDoo also keeps them from starting for mobile accounts) */
+body.ax-voodoo-mobile #token-action-hud, body.ax-voodoo-on #token-action-hud { display: none !important; }
 body.ax-voodoo-on #notifications { z-index: 9500; }
 #ax-voodoo *, #ax-voodoo *::before, #ax-voodoo *::after { box-sizing: border-box; }
 #ax-voodoo button {
@@ -54,6 +56,9 @@ body.ax-voodoo-on #notifications { z-index: 9500; }
 .axs-menu-item .axs-menu-icon { width: 46px; text-align: center; font-size: 22px; color: var(--axs-accent); }
 .axs-menu-item small { display: block; margin-left: 0 !important; font-size: 13px; }
 #ax-voodoo .axs-menu-item { min-height: 52px !important; width: 100%; }
+#ax-voodoo .axs-hot-row { display: flex; align-items: center; gap: 6px; }
+#ax-voodoo .axs-hot-row .axs-menu-item { flex: 1; min-width: 0; }
+#ax-voodoo [data-menu="hotbar"] .axs-wide { margin-top: 6px; }
 .axs-sheet-box [data-menu] { display: flex; flex-direction: column; gap: 6px; }
 .axs-sheet-box [data-menu] .axs-sec { margin-bottom: 0; }
 .axs-hot-pages { margin-bottom: 0; }
@@ -238,6 +243,8 @@ body.ax-voodoo-on .axs-raised button { min-height: 44px; }
 /* Foundry's own panels stay hidden: the VooDoo window does their jobs. Notifications and windows still show. */
 body.ax-voodoo-map #interface { visibility: hidden; }
 body.ax-voodoo-map #notifications, body.ax-voodoo-map .axs-raised, body.ax-voodoo-map #interface .app, body.ax-voodoo-map #interface .application { visibility: visible; }
+/* Foundry v11 marks its own panels (sidebar, scene list, players, controls) "app" too: keep those hidden; only windows show */
+body.ax-voodoo-map #ui-left .app, body.ax-voodoo-map #ui-right .app, body.ax-voodoo-map #ui-top .app, body.ax-voodoo-map #ui-bottom .app { visibility: hidden; }
 /* On the Map view the window is see-through between its top and bottom bars, over Foundry's map */
 #ax-voodoo.axs-on-map { background: transparent; }
 .axs-map { position: relative; }

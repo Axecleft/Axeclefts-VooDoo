@@ -15,7 +15,7 @@ export class DialogBridge {
     this.pending = null;
     const onRender = (app, html) => this.onRender(app, html);
     Hooks.on("renderDialog", onRender);
-    Hooks.on("renderApplication", (app, html) => { if (!(app instanceof (globalThis.Dialog ?? class {}))) this.raise(this.rootOf(app, html)); });
+    Hooks.on("renderApplication", (app, html) => { if (!(app instanceof ((typeof Dialog !== "undefined" ? Dialog : globalThis.Dialog) ?? class {}))) this.raise(this.rootOf(app, html)); });
     Hooks.on("renderApplicationV2", (app) => { if (app.element && !app.element.closest?.("#ax-voodoo")) this.raise(app.element); });
   }
 

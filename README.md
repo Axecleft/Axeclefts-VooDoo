@@ -6,7 +6,7 @@ The GM gives each player a **mobile account**. Logging in with it from a phone's
 ## Setting up (GM)
 1. **Configure Settings → Axecleft's VooDoo → Create mobile accounts** (or the Axecleft's Tools menu → **Mobile accounts**).
 2. Tick the players who need mobile access, type a password for each, tick **Map** for those who should have one, and press **Save**. The same pop-up turns the map on or off for existing mobile accounts.
-3. Each becomes **"Name (Mobile)"**, linked to the player's account. It gets the same ownership of every character, and keeps it as you change ownership later. It starts on the player's assigned character.
+3. Each becomes **"Name (Mobile)"**, linked to the player's account. It gets the same ownership of every character and macro, and keeps it as you change ownership later. It starts on the player's assigned character.
 4. The player opens your Foundry address on their phone, picks their mobile account, and logs in.
 
 - Mobile accounts show in the player list with a phone icon. **Hide mobile accounts in the player list** leaves them out.
@@ -29,7 +29,7 @@ The GM gives each player a **mobile account**. Logging in with it from a phone's
 - **Chat:** All, Rolls, Damage/Healing and Whispers filters, and a box to send messages and chat commands (`/roll 1d20+5`, `/w GM …`). Your own rolls also show a short result at the top while you're on another tab, and the Chat button counts new messages.
 - **Combat:** the initiative order with the current turn marked, **Roll initiative** for your characters that haven't rolled, and **End turn** on your turn.
 - **Character:** tap your character's name at the top to switch characters (chat cards then show the new one). The tabs across the top scroll sideways; you can also swipe the page left or right.
-- **Menu (☰):** Shops and loot (merchants, loot piles and party storage open to you), Tools (My Traps, Crafting and other one-click buttons a player may use), Sidebar (Journal, Items, Compendiums, Roll Tables) and Hotbar (your macros, page by page).
+- **Menu (☰):** Shops and loot (merchants, loot piles and party storage open to you), Tools (My Traps, Crafting and other one-click buttons a player may use), Sidebar (Journal, Items, Compendiums, Roll Tables) and Hotbar (your macros, page by page; add, remove, or copy your desktop hotbar).
 - **The scene** shows under your character's name, with whether your character is on it.
 - **Keep the screen on:** the phone button at the top right (beside the ☰ menu), lit while it's on. Browsers only allow it when Foundry is opened over `https://`.
 - **Lost connection:** the window shows *Reconnecting…* and reloads once the server answers again, including after the phone was asleep.
@@ -48,6 +48,17 @@ On a GM's mobile account the window runs creatures and NPCs:
 - **Roll mode** (the gear button, any phone): who sees the phone's rolls, Foundry's own roll mode for that device.
 
 ## Changelog
+### 1.14.4.7
+- **One link installs the whole suite.** Every Axecleft module now recommends all the others (Gemstones, Armory, Curios, Traps, Adventurers and Minions, Hoard Editor, Printable Sheets, VooDoo and the Tools Suite manager), so installing any one of them offers to install the rest.
+- Ships Axecleft's Tools 9.74: **Help on hover**. In a window that has a tour, turn on **Help on hover** in its ⋮ menu and rest the mouse on a part of the window to see that part's tour text.
+- **Picking a spot on the map for other modules.** Setting a trap from a kit on the phone did nothing: the trap asked for a click on the map, and VooDoo's touch layer covers the map. Now the view switches to the Map and asks you to tap the spot (drag still moves the map; Cancel gives up), then goes back to where you were. Axecleft's Traps, Poisons, and Diseases uses it; other modules can too (API: `canPick()`, `pickPoint({ prompt })`).
+- **Back to the Chat after a crafting request.** Sending a crafting request to the GM left the crafting window over the Chat, where the checks are rolled. The window now closes and the phone shows its Chat (Axecleft's Crafting 1.98; API for other modules: `showView(view)`).
+- The phone's **Tools** menu no longer lists a tool twice when its module has a button both in Axecleft's Tools and in the scene controls (the Performance Monitor, Adventurers and Minions).
+### 1.14.4.6
+- **Hotbar on the phone.** The menu's Hotbar can now be filled from the phone: **Add a macro** (the macros on your desktop account's hotbar first, then every macro you can run, with a search) puts it in the first empty slot of the page shown, **×** takes one off, and **Copy my desktop hotbar** puts your desktop account's macros in the same slots. Mobile accounts now get the same ownership of macros as their player (a macro made by dragging an item to the hotbar belongs to that player alone), so the phone can run them.
+- **Token Action HUD** no longer shows its bar over the VooDoo window on a mobile account (it did nothing there). VooDoo keeps it off for mobile accounts only; the same browser logged in as a normal account still has it, and Token Action HUD's own settings are left as they are.
+### 1.14.4.5
+- Foundry v11: item descriptions and notes show their links and rolls (they showed the raw text), and a token dragged on the map lands on its space on any grid. With the Map on, Foundry's sidebar, scene list and player list stay hidden behind the window (they showed over the map, and the sidebar's collapse button couldn't be reached), and the low resolution warning is stopped earlier. The tours and the Mobile accounts pop-up no longer say the phone can't move tokens (a held and dragged token moves). One code for both versions: Axecleft's VooDoo for Foundry v11 is made from it.
 ### 1.14.4.4
 - **Tours.** **VooDoo: Mobile accounts** (GM, in Configure Settings → Tour Management) walks through creating the players' mobile accounts. **VooDoo: The phone window** walks a player (or the GM's phone) through the window: the character and menu at the top, the character's tabs, tap to roll and hold for options, Party, Chat, Combat and Map. Start it from the phone's **Settings → Take a tour of this window**; the first time a phone opens the window, a note says where it is.
 - Map: the help under the map is one line (**Tap: target · Hold: open or move**); the **?** beside it shows the full instructions, and × folds them again.
@@ -65,7 +76,7 @@ On a GM's mobile account the window runs creatures and NPCs:
 - **Menu** (the ☰ button at the top): what the left- and right-hand menus and the hotbar give a player on a computer.
   - **Tools:** the one-click buttons of the scene controls a player may use: Axecleft's Tools (My Traps, Crafting and the rest, as in the toolbox menu) and other modules' buttons. Buttons that work by clicking on the map are left out.
   - **Sidebar:** Journal, Items, Compendiums and Roll Tables, opened at the phone's width (more can be added later).
-  - **Hotbar:** the account's macros, page by page (1 to 5); tap one to run it.
+  - **Hotbar:** the account's macros, page by page (1 to 5); tap one to run it, **×** to take it off. **Add a macro** fills the first empty slot on the page (your desktop hotbar's macros are listed first); **Copy my desktop hotbar** copies your desktop account's macros into the same slots.
 - **The scene** under the character's name: the scene being viewed (with no map, the one the player's main account is on, else the active scene) and whether the character is there (red: "isn't here", or the scene it's on). A change of scene shows "Now on: …".
 ### 1.14.3.2
 - Fixed: with Axecleft's Hoard Editor switched off, the phone window found no character and showed every view at once (Foundry v14 throws when a module that's off is asked for its flag). The window now reads that mark safely, and a failure finding the character no longer breaks the whole window.

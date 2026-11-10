@@ -28,7 +28,7 @@ export function registerTours({ openAccounts, mobile, win }) {
         { id: "password", sel: "input[name^='pw-']", title: /*t*/"Mobile password",
           content: /*t*/"The password the mobile account logs in with. Players type it on their phone, so keep it simple." },
         { id: "map", sel: "label:has(input[name^='newmap-']), label:has(input[name^='map-'])", title: /*t*/"Map",
-          content: /*t*/"Ticked, the phone gets a Map view to target tokens and place spell areas by touch (it can't move tokens). Unticked, the phone has no map: lighter and faster. Players can switch it themselves in the phone's Settings." },
+          content: /*t*/"Ticked, the phone gets a Map view to target tokens, move its own tokens and place spell areas by touch. Unticked, the phone has no map: lighter and faster. Players can switch it themselves in the phone's Settings." },
         { id: "existing", sel: "td:has(.fa-mobile-screen-button)", title: /*t*/"Accounts already made",
           content: /*t*/"A player who already has a mobile account shows it here; only its Map box can be changed. To delete one, use Configure Players." },
         { id: "save", sel: "button[data-action='create']", title: /*t*/"Save", direction: "UP",
@@ -67,7 +67,7 @@ export function registerTours({ openAccounts, mobile, win }) {
       { id: "combat", sel: ".axs-view[data-view='combat'] .axs-content", title: /*t*/"Combat", direction: "UP", before: view("combat"),
         content: /*t*/"The turn order. Roll initiative, and end your turn when it is yours. On a GM's phone: start the combat, roll for NPCs and move the turns." },
       ...(map ? [{ id: "map", sel: ".axs-view[data-view='map']", title: /*t*/"Map", direction: "UP", before: view("map"),
-        content: /*t*/"The scene: tap tokens to target them and place spell areas. The phone can't move tokens." }] : []),
+        content: /*t*/"The scene: tap a token to target it and place spell areas. Press and hold a token to open it; keep holding and drag your own token to move it." }] : []),
       { id: "bottom", sel: ".axs-bottom", title: /*t*/"Views", direction: "UP", before: view("character"),
         content: map ? /*t*/"Switch between Character, Party, Chat, Combat and Map here. A number on Chat counts the messages you haven't seen." : /*t*/"Switch between Character, Party, Chat and Combat here. A number on Chat counts the messages you haven't seen." },
     ] });
